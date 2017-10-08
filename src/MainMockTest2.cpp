@@ -13,5 +13,14 @@ decrease or become 0 , If it leads to a Project Build Failure .
 int main(){
 	
 
+	/*
+	char *s1 = "abc,3\nbca,4\n";
+	char *s2 = "bca,99\n";
+	char *s3 = "cca,100\n";
+	char * output = mini_leaderboard(s1,s2,s3);
+	printf("[%s]", output);
+	*/
+
+	//testEncodeDecode();
 	return 0;
 }

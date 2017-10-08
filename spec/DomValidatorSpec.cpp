@@ -56,6 +56,32 @@ namespace spec
 #pragma endregion 
 
 
-	
+		[TestMethod, Timeout(3000)]
+		void dom_basic_single_tag()
+		{
+			char *input = "<html></html>";
+			int op = isStringValidDom(input);
+			int expected = 1;
+			Assert::AreEqual(expected, op, L"DOM is valid", 1, 2);
+
+			input = "<html><html>";
+			op = isStringValidDom(input);
+			expected = -1;
+			Assert::AreEqual(expected, op, L"DOM is valid", 1, 2);
+		}
+
+		[TestMethod, Timeout(3000)]
+		void dom_basic_syntax()
+		{
+			char *input = "<html><head></head></html>";
+			int op = isStringValidDom(input);
+			int expected = 1;
+			Assert::AreEqual(expected, op, L"output is wrong", 1, 2);
+
+			input = "<html><head><head></html>";
+			op = isStringValidDom(input);
+			expected = -1;
+			Assert::AreEqual(expected, op, L"output is wrong", 1, 2);
+		}
 	};
 }

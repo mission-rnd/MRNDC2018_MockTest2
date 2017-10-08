@@ -38,15 +38,35 @@ namespace spec
 
 
 
+		void compareStrings_ED(char *expected, char * actual) {
+			int i = 0;
+			while (expected[i] != '\0') {
+				Assert::AreEqual(expected[i], actual[i], L"EncodeDecode expected and actual string mismatch, copy test case into main and check the output", 1, 2);
+				i++;
+			}
+			if (actual[i] != '\0') {
+				Assert::Fail("Output string not ended with slash 0");
+			}
+		}
 
 		[TestMethod, Timeout(1000)]
 		void EncodeDecode_Sample01()
 		{
+			//Test encoding
+			char *message = "brook";
+			char *expectedEncoded = "orobk";
+			char *actual = encode(message);
+			compareStrings_ED(expectedEncoded, actual);
 		}
 
 		[TestMethod, Timeout(1000)]
 		void EncodeDecode_Sample02()
 		{
+			//Test decoding
+			char *message = "ecabdf";
+			char *expectedDecoded = "abcdef";
+			char *actual = encode(message);
+			compareStrings_ED(expectedDecoded, actual);
 		}
 
 
